@@ -1,20 +1,19 @@
 import random
 
 def compare_numbers(number, user_guess):
-    """Compare the generated number with the user's guess and return (cows, bulls)."""
-    cows = 0  # Right digit, wrong place
-    bulls = 0  # Right digit, right place
+    cows = 0
+    bulls = 0
 
-    for i in range(len(number)):  # Compare each digit
+    for i in range(len(number)):
         if user_guess[i] == number[i]:
             bulls += 1
         elif user_guess[i] in number:
             cows += 1
 
-    return cows, bulls  # Return tuple (cows, bulls)
+    return cows, bulls
 
-playing = True  # Start the game
-number = str(random.randint(0, 9999)).zfill(4)  # Generate a random 4-digit number with leading zeros if needed
+playing = True
+number = str(random.randint(0, 9999)).zfill(4)
 guesses = 0
 
 print("Let's play a game of Cowbull!")  
@@ -25,7 +24,7 @@ print("The game ends when you get 4 bulls!")
 print("Type 'exit' at any prompt to exit.")
 
 while playing:
-    user_guess = input("Give me your best 4-digit guess: ").zfill(4)  # Ensure 4-digit input
+    user_guess = input("Give me your best 4-digit guess: ").zfill(4)
     
     if user_guess.lower() == "exit":
         print("Thanks for playing! The number was", number)
@@ -42,6 +41,6 @@ while playing:
 
     if cowbullcount[1] == 4:
         print(f"You win the game after {guesses} guesses! The number was {number}.")
-        playing = False  # Stop the game
+        playing = False
     else:
         print("Your guess isn't quite right, try again.")
